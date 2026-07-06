@@ -1,0 +1,8 @@
+{
+  "name": "Telegram & WhatsApp AI Bot Hub",
+  "description": "A full-stack control pane to deploy and monitor AI-powered chatbots on Telegram and WhatsApp using Gemini.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

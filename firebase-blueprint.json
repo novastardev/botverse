@@ -1,0 +1,77 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Account",
+      "description": "User profile containing email, password, and creation time",
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "User email address"
+        },
+        "password": {
+          "type": "string",
+          "description": "Clear or hashed password credential if registered manually"
+        },
+        "name": {
+          "type": "string",
+          "description": "Display name"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Time the account was provisioned"
+        }
+      },
+      "required": [
+        "email",
+        "name",
+        "createdAt"
+      ]
+    },
+    "Bot": {
+      "title": "AI Bot Store",
+      "description": "Saved configurations and parameters of user chatbots",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "name": { "type": "string" },
+        "platform": { "type": "string" },
+        "status": { "type": "string" },
+        "aiSource": { "type": "string" },
+        "aiModel": { "type": "string" },
+        "apiKey": { "type": "string" },
+        "systemPrompt": { "type": "string" },
+        "customInstructions": { "type": "string" },
+        "greetingMessage": { "type": "string" },
+        "telegramToken": { "type": "string" },
+        "createdAt": { "type": "string" }
+      }
+    },
+    "SubscriptionConfig": {
+      "title": "Subscription and Memory Config",
+      "description": "Tracks cognitive memory footprint limits and active billing tiers",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "maxMemoryMb": { "type": "number" },
+        "subscribedPlan": { "type": "string" }
+      }
+    }
+  },
+  "firestore": {
+    "users/{email}": {
+      "schema": "User",
+      "description": "Secure user registry keyed by the lowercased email identifier"
+    },
+    "users/{email}/bots/{botId}": {
+      "schema": "Bot",
+      "description": "Saved dynamic chatbot entities governed by user accounts"
+    },
+    "users/{email}/subscription/config": {
+      "schema": "SubscriptionConfig",
+      "description": "User specific subscription model and cloud constraints config"
+    }
+  }
+}
